@@ -1,0 +1,15 @@
+library(tidyverse)
+library(ggplot2)
+library(ggridges)
+
+v<-ggplot(viz2, aes(x = propositivo, y = uf, fill = stat(x))) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
+  scale_fill_viridis_c(name = "%", option = "C") +
+  labs(title = 'Proportion of cases confirmed among investigated 
+       of Malaria by Federation Unit (FU), Brazil, 2007-2019')+
+  labs(x = "Proportion",
+       y = "FU") +
+  labs(caption = "Source: SIVEP Malaria, 2007-2019")
+v
+
+ggsave(filename = "ridges.png", plot=v)
